@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://h540b8sh7bes"]
+
+[ext_resource type="Script" uid="uid://cfbh24i5er6e0" path="res://Scenes/world.gd" id="1_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://dba7fiaeafciy" path="res://Scenes/washing_gun.tscn" id="1_a02cp"]
+[ext_resource type="PackedScene" uid="uid://duhvvcskarjsm" path="res://Scenes/cleanable_item_1.tscn" id="2_8j60k"]
+[ext_resource type="AudioStream" uid="uid://d0uah24b8erks" path="res://Assets/Short Theme V2.wav" id="4_8j60k"]
+
+[node name="World" type="Node2D" unique_id=1188783815]
+script = ExtResource("1_5a7ea")
+
+[node name="CleanableItem1" parent="." unique_id=1593626276 instance=ExtResource("2_8j60k")]
+position = Vector2(550, 400)
+scale = Vector2(0.5, 0.5)
+
+[node name="Dirt" parent="CleanableItem1" index="1" unique_id=273962939]
+position = Vector2(-30.000013, -302.00003)
+rotation = -0.390839
+scale = Vector2(0.6625784, 0.7338658)
+
+[node name="CollisionShape2D" parent="CleanableItem1/Hurtbox" parent_id_path=PackedInt32Array(1593626276, 1624719530) index="0" unique_id=845950703]
+scale = Vector2(0.8081045, 0.5552942)
+polygon = PackedVector2Array(-275.95435, -537.55286, -236.35559, -382.68, -214.08118, -245.81567, -189.33191, -98.14612, -154.68298, 60.32837, -129.9336, 193.59106, -85.38501, 341.2605, -55.68579, 373.67578, -40.836304, 355.66736, -45.786133, 301.64185, -60.635742, 211.59949, -82.910034, 161.17578, -97.75964, 81.9386, -142.30835, -101.7478, -157.15784, -289.03595, -194.28174, -443.9088, -175.92085, -513.8668, -154.0824, -541.55536, -103.12598, -486.17822, -50.735962, -440.30713, -1.2374268, -443.9088, 45.786255, -451.11224, 107.659424, -404.29016, 159.63281, -343.0614, 199.23169, -310.64612, 253.68005, -321.45123, 268.52966, -429.50208, 278.42932, -577.1715, 231.40576, -688.82404, 142.30835, -685.22235, 90.33484, -724.841, 21.036865, -778.8664, -16.087036, -793.2732, -50.735962, -843.6969, -120.033936, -883.31555, -159.63281, -897.7223, -202.6123, -896.62024, -226.45581, -850.90027, -277.83362, -811.9258, -268.12766, -714.2016, -283.37915, -605.98505)
+
+[node name="WashingGun" parent="." unique_id=571782287 instance=ExtResource("1_a02cp")]
+scale = Vector2(0.5, 0.5)
+
+[node name="GunAnimatedSprite" parent="WashingGun" index="0" unique_id=502396971]
+position = Vector2(19.999998, 73.99999)
+scale = Vector2(0.1, 0.1)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1113213311]
+
+[node name="FinishCleaning" type="Button" parent="UI" unique_id=1200732325]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_right = 125.0
+offset_bottom = 15.5
+grow_vertical = 2
+scale = Vector2(2, 2)
+text = "Finish Cleaning"
+
+[node name="ProgressLabel" type="Label" parent="UI" unique_id=475241322]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -2.0
+offset_right = 2.0
+offset_bottom = 27.0
+grow_horizontal = 2
+
+[node name="Replay" type="Button" parent="UI" unique_id=123497410]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -526.0
+offset_top = -258.0
+offset_right = -466.0
+offset_bottom = -227.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2, 2)
+text = "Replay"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="UI" unique_id=1668668679]
+stream = ExtResource("4_8j60k")
+autoplay = true
+
+[connection signal="pressed" from="UI/Replay" to="." method="_on_replay_pressed"]
+
+[editable path="CleanableItem1"]
+[editable path="WashingGun"]

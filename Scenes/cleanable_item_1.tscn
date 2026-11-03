@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://duhvvcskarjsm"]
+
+[ext_resource type="Script" uid="uid://bo6dtt4t77wtu" path="res://Scenes/cleanable_item_1.gd" id="1_mnrd5"]
+[ext_resource type="Texture2D" uid="uid://54fmxw754obw" path="res://Assets/Cleanable/CleanableObjectGiant-cut.png" id="2_s1q1o"]
+[ext_resource type="Shader" uid="uid://d3tnrhrhbr1p3" path="res://Scenes/splatmap_texture.gdshader" id="3_s1q1o"]
+[ext_resource type="Texture2D" uid="uid://ber0ruegoed0w" path="res://Assets/Cleanable/Dirt-edit.png" id="4_coq7y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s1q1o"]
+shader = ExtResource("3_s1q1o")
+
+[node name="CleanableItem1" type="Area2D" unique_id=851846761]
+script = ExtResource("1_mnrd5")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1613219269]
+position = Vector2(0, -140)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_s1q1o")
+
+[node name="Dirt" type="Sprite2D" parent="." unique_id=273962939]
+material = SubResource("ShaderMaterial_s1q1o")
+position = Vector2(-25.000004, -301)
+rotation = -0.3643151
+scale = Vector2(0.57587737, 0.9174511)
+texture = ExtResource("4_coq7y")
+
+[node name="SplatmapViewport" type="SubViewport" parent="." unique_id=1926907736]
+transparent_bg = true
+size = Vector2i(128, 128)
+render_target_clear_mode = 1
+render_target_update_mode = 4
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1624719530]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Hurtbox" unique_id=845950703]
+light_mask = 0
+visibility_layer = 2
+position = Vector2(1, -81.5)
+scale = Vector2(0.82423425, 0.6139723)
+polygon = PackedVector2Array(-254.78192, -536.6692, -213.53152, -391.7115, -190.47981, -256.52625, -157.72214, -106.68233, -112.832, 100.16738, -61.87561, 308.64584, -14.558968, 465.0047, 13.34572, 481.29205, 20.625204, 447.08856, -4.852989, 339.59186, -27.904688, 266.29865, -46.1034, 163.68816, -84.927315, 48.047768, -112.832, -142.51457, -137.09694, -305.38837, -169.85461, -434.05865, -175.92085, -513.8668, -154.0824, -541.55536, -103.12602, -505.72314, -57.02262, -419.40002, -12.132473, -401.4839, 26.69144, -398.22644, 106.76576, -333.0769, 134.67046, -266.29865, 186.84009, -214.17903, 219.59776, -207.66408, 237.79648, -225.58022, 235.36998, -416.14258, 224.45076, -517.1243, 186.84009, -600.18994, 132.24396, -631.136, 75.22133, -662.082, 6.0662365, -751.6626, -46.1034, -787.4948, -94.63329, -862.41675, -146.80292, -898.24896, -196.54605, -925.93756, -235.36996, -891.7341, -270.55417, -807.0397, -268.12766, -714.2016, -258.4217, -606.7049)

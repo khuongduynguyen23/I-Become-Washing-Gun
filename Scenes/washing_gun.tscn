@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dba7fiaeafciy"]
+
+[ext_resource type="Script" uid="uid://baoswtqka2rfu" path="res://Scenes/washing_gun.gd" id="1_eq1jy"]
+[ext_resource type="Texture2D" uid="uid://bhvnh5emt8ejl" path="res://Assets/Gun-cut.png" id="2_66p2y"]
+[ext_resource type="AudioStream" uid="uid://cgyeko8l8oj00" path="res://Assets/Copy of WatersprayCopy of Nov 3 at 15-33.wav" id="3_ph7s4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eq1jy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_66p2y")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_66p2y"]
+
+[sub_resource type="Curve" id="Curve_66p2y"]
+_limits = [0.0, 1.55, 0.0, 1.0]
+_data = [Vector2(0, 1.4224935), 0.0, 0.0, 0, 0, Vector2(1, 0.19537282), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_66p2y"]
+curve = SubResource("Curve_66p2y")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_66p2y"]
+lifetime_randomness = 1.0
+particle_flag_align_y = true
+direction = Vector3(0, 0, 0)
+spread = 10.0
+initial_velocity_min = 1000.0
+initial_velocity_max = 1200.0
+gravity = Vector3(0, 98, 0)
+scale_min = 2.0
+scale_max = 3.5
+scale_curve = SubResource("CurveTexture_66p2y")
+
+[node name="WashingGun" type="Area2D" unique_id=2027072597]
+light_mask = 2
+collision_mask = 3
+script = ExtResource("1_eq1jy")
+
+[node name="GunAnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=502396971]
+position = Vector2(101, 368)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_eq1jy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=11546343]
+light_mask = 2
+shape = SubResource("CircleShape2D_66p2y")
+
+[node name="WaterParticles" type="GPUParticles2D" parent="." unique_id=1459904556]
+emitting = false
+amount = 1000
+lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_66p2y")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2128625599]
+stream = ExtResource("3_ph7s4")
